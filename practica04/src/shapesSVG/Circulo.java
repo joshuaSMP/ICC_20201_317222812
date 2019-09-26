@@ -1,97 +1,109 @@
-package shapesSVG;
-/**Clase que modela un circulo
-*/
-public class Circulo{
-        private Vector2 centro;
-        private double radio;
-        private double perimetro;
-        private double area;
-        /** 
-        * Constructor que recibe como parámetros un vector y un numero
-        * @param centro un vctor
-        * @param radio un numero
-        **/
-    public Circulo(Vector2 centro, double radio){
-        this.centro = centro;
-        this.radio = radio ; 
+/**
+ * Clase que modela un círculo 
+ */
+package shapesSVG ;
+public class  Circulo {
+     private Vector2 a ;
+     private double radio  ;
+     private double diametro ;
+     private double area ;
+    /**
+     * Parámetros de la clase circulo
+     * @param a - Punto con el cual se crea el círculo
+     * @param radio - Radio del circulo
+     * @param diametro - Diametro del circulo
+     * @param area - Área del circulo
+     */
+
+     /**
+      * Constructor que pide el punto que será el centro de círculo y un radio
+      * @param a - Centro del circulo
+      * @param radio - Radio del circulo
+      */
+     public Circulo( Vector2  a ,double radio ) {
+        this.a = a;
+        this. radio = radio;
+        this. diametro = ( this. radio *  2 );
+        this. area = (( this . radio *  this . radio) *  3.141592 );
     }
     /**
-    * Constructor que recibe como parámetros un vector y un numero
-    * @param x un numero para la coordenada x
-    * @param y un numero para la coordenada y
-    * @param radio un numero para el radio
-    **/
-    public Circulo(double x, double y, double radio ){
-        this.x = x;
-        this.y = y; 
+     * Constructor que recibe la coordenada en xy en y de un punto, y el radio
+     * @param x - Coordenada de en x del punto
+     * @param y - Coordenada de en y del punto
+     * @param radio - Radio del circulo
+     */
+     public Circulo ( double  x , double  y , double  radio ) {
+        Vector2 v1 =  new  Vector2 (x, y);
+        this.a = v1;
+        this.radio = radio;
+        this.diametro = ( this.radio *  2 );
+        this.area = (( this.radio *  this .radio) *  3.141592 );
+    }
+    /**
+     * Constructor que no recibe nada y que pone el centro del círculo en (100, 100) y asigna un radio = 50
+     */
+     public Circulo () {
+        Vector2 v1 =  new  Vector2 ( 100.0 , 100.0 );
+        this.a = v1;
+        this.radio =  50 ;
+        this.diametro = ( this.radio *  2 );
+        this.area = (( this.radio *  this.radio) *  3.141592 );
+    }
+    /**
+     * Creación de setters
+     */
+    public void setA ( Vector2  a ) {
+        this.a = a;
+    }
+    public  void  setRadio ( double radio ) {
         this.radio = radio;
     }
-    /**
-    * Constructor vacio ue inicializa los valores
-    **/
-    public Circulo(){
-        this.x = 0;
-        this.y = 0;
-        this.radio = 0;
+    public  void  setDiametro ( double  diametro ) {
+        this.diametro = diametro;
+    }
+    public  void  setArea ( double area  ) {
+        this.area = area;
     }
     /**
-     * Metodos setters que regresan el radio, perimetro y area 
-     * @return radio el radio de un circulo
-     * @return perimetro el perimetro de un circulo
-     * @return area el area de un circulo
-     **/
-    public void setX(double x){
-        this.x = x;
+     * Creación de getters
+     */
+    public  Vector2  getA () {
+        return  this. a;
     }
-    public void setY(double y){
-        this.y = y;
+    public  double  getRadio () {
+        return   this. radio;
     }
-    public void setRadio(double radio){
-        this.radio = radio;
+    public  double  getDiametro () {
+        return   this. diametro;
     }
-    /**
-     * Metodos getters que regresan el radio, area y perimetro
-     * @return radio el radio de un circulo
-     * @return perimetro el perimetro de un circulo
-     * @return area el area de un circulo
-     **/
-    public double getX(){
-        return this.x;
-    }
-    public double getY(){
-        return this.y;
-    }
-    public double getRadio(){
-        return this.radio;
+    public  double  getArea () {
+        return  this. area;
     }
     /**
-     * Metodo toSVG que regresa una cadena co la representación de un círculo en svg
-     @return una figura geometrica
-    **/
-    public String toSVG(){
-        StrictMath cir="<circle cx='"+Double.toString(this.x)+"' cy='"+Double.toString(this.y)+"' r='"+"90.0"+"' fill='"+"blue"+"' stroke='"+"green"+"' stroke-width='"+"1.0"+"'/>";
+     * Metodo que permite que nuestro círculo sea libremente gráfico, regresa una cadena que representa la representación del círculo en SVG
+     * @return String - La representación del círculo en SVG
+     */
+    public  String  toSVG () {
+        String cir =  " <circle cx = ' " + Double.toString ( this.a.getX ()) + " 'cy =' " + Double.toString ( this.a.getY ()) + " 'r =' " + Double.toString ( this.radio) + " 'fill =' " + " pink " + " 'stroke ='blue " + " 'stroke-width =' " + " 6.0 " + " '/> " ;
+        return cir;
     }
     /**
-     * Metodo toSVG que regresa una cadena co la representación de un círculo en svg
-     @return una figura geometrica
-    **/
+     * Metodo para convertir un círculo a una cadena de caracteres
+     * @return String - Un círculo en forma de cadena
+     */
     @Override
-    public String toString(){
-        Círculo cr =  new  Círculo ();
-	return  " Círculo "  +  " El centro que tiene el círculo es :( "  +  this . centro . getX () +  " , "  +  this . centro . getY () + " ) "  +  " Tiene como radio: "  +
-	    this. radio +   " Tiene como primetro: "  +  this. perimetro  +  " Tiene como área: "  +  this. área ;
+    public  String  toString () {
+        String circulo  =  " El circulo tiene centro en: " + a  +  " y tiene radio de: " + radio;
+        return circulo;
     }
     /**
-    * Metodo es igual a la realización de la comparación entere dos circulos
-    * @return true en caso de que sean iguales, false si no lo son
-    **/
-    public boolean equals(Object v){
-        Círculo cr =  new Círculo ();
-        Circulo cr1 =  new  Circulo ();
-        if (cr. equal.a (cr1));
-            return True ;
-            return False ;
+     * Metodo que compara si 2 circulos son iguales, si son asi regresa verdadero, en otro caso falso
+     * @param v - Círculo con el cual se va a comparar
+     * @return boolean - true si 2 circulo son iguales, false si no
+     */
+    @Override
+    public  boolean  equals ( Object  v  ) {
+        Circulo z = ( Circulo ) v ;
+        return  a == z.getA () && radio == z.getRadio ();
     }
-    
-    
-    }
+}

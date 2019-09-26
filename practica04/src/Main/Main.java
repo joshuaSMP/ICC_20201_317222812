@@ -6,38 +6,26 @@ import shapesSVG.Circulo;
 public class Main{
     public static void main (String[] args){
 
-        Vector2 x = new Vector2(200, 200);
         String ini = "<svg height='700' width='700'>";
         String cie = "</svg>";
-        System.out.println(ini);
-        System.out.println(x.toSVG());
-        System.out.println(cie);
-        Linea y = new Linea(400, 400);
-        String in = "<svg height='700' width='700'>";
-        String ci ="</svg>";
+        Vector2 x = new Vector2(200, 200);
+
+        Circulo c= new Circulo(50.0,50.0, 10.0);
+        
+        Linea y = new Linea(70.0, 70.0, 20.0 , 20.0);
+        
+        Rectangulo z = new Rectangulo(30.0, 40.0, 90.0 , 60.0 );
+        
+        Triangulo t = new Triangulo(80.0, 60.0, 50.0, 55.0, 90.0, 100.0);
+
+
         System.out.println(ini);
         System.out.println(y.toSVG());
-        System.out.println(cie);
-        Rectangulo z = new Rectangulo(60, 30);
-        String inic = "<svg height='700' width='700'>";
-        String cier ="</svg>";
-        System.out.println(ini);
         System.out.println(z.toSVG());
-        System.out.println(cie);
-        Triangulo t = new Triangulo(100, 50);
-        String inici = "<svg height='700' width='700'>";
-        String cierr ="</svg>";
-        System.out.println(ini);
+        System.out.println(x.toSVG());
+        System.out.println(c.toSVG());
         System.out.println(t.toSVG());
         System.out.println(cie);
-        Circulo c= new Circulo(40, 40);
-        String inicio = "<svg height='700' width='700'>";
-        String cierre ="</svg>";
-        System.out.println(ini);
-        System.out.println(c.toSVG());
-        System.out.println(cie);
-
-
-
+        
     }
 }

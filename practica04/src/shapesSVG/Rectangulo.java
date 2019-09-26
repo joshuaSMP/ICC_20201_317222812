@@ -1,122 +1,76 @@
-package shapesSVG;
-/**
- * Clase que modela un rectangulo
-**/
 
-public class Rectangulo{
-        private Vector2 a;
+package shapesSVG ;
+public class Rectangulo {
+        private  Vector2 a;
         private double ancho;
-        private double alto;
-        private double perimetro;
+        private  double alto;
         private double area;
-        /**
-        * Costructor que recibe como parámetros un vector, y dos numeros
-        * @param v1 un vector
-        * @param ancho un numero
-        * @param double un numero
-        **/
-        public Rectangulo(Vector2 a, double ancho, double alto, double perimetro, double area){
-            this.a = a ; 
+        private double perimetro;
+    
+        public  Rectangulo ( Vector2 a , double  ancho , double  alto ) {
+            this.a = a;
             this.ancho = ancho;
-            this.alto = alto; 
-            this.perimetro = perimetro;
-            this.area = area;
+            this.alto = alto;
+            this.area = ancho * alto;
+            this.perimetro = ancho + ancho + alto + alto; 
         }
-
-    /**
-    * Constructor que recibe como parámetros las coordenadas de un vector y dos numeros
-    * @param x coordenada x
-    * @param y coordenada y
-    * @param ancho un umero
-    * @param alto un numero
-    **/
-   
-        public Rectangulo(double x, double y, double ancho, double altura){
-            this.x = x;
-            this.y = y;
+        public Rectangulo( double  x , double  y , double  ancho , double  alto ) {
+            this.a = new Vector2(x, y);
             this.ancho = ancho;
-            this.altura = altura;
+            this.alto = alto;
+            this.area = ancho * alto;
+            this.perimetro = ancho + ancho + alto + alto; 
         }
-        /**
-        * Constructor vacio que inicializa los valores
-        **/
-   
         public Rectangulo(){
-            this.x = 0;
-            this.y = 0;
-            this.ancho = 0;
-            this.alto = 0;    
+             this.a = new Vector2(0.0, 0.0);
+             this.ancho = 0.0;
+             this.alto = 0.0;
+             this.area = 0.0;
+            this.perimetro = 0.0; 
         }
-        /**
-        * Metodos setters que regresan el ancho, alto, perimetro y area 
-        * @return cancho el ancho de un rectangulo
-        * @return alto el alto de un rectangulo
-        * @return perimetro el perimetro de un rectangulo
-        * @return area el area de un rectangulo
-        **/
-        public void setx(double x ){
-            this.x = x ;
+        public void setA ( Vector2  a ) {
+            this.a = a;
         }
-        public void sety(double y){
-            this.y = y; 
-        }
-        public void setancho(double ancho ){
+        public void setAncho ( double  ancho ) {
             this.ancho = ancho;
         }
-        public void setalto( double alto){
+        public  void  setAlto ( double  alto ) {
             this.alto = alto;
         }
-        /**
-     * Metodos getters que regresan el ancho, alto, perimetro y area
-     * @return ancho el ancho de un rectangulo
-     * @return alto el radio de un alto
-     * @return perimetro el perimetro de un circulo
-     * @return area el area de un circulo
-     **/
-        public double getX(){
-            return this.x;
+        public  void  setPerimetro (double perimetro   ) {
+            this.perimetro = perimetro;
         }
-        public double getY(){
-            return this.y;
+        public  void  setArea ( double area  ) {
+            this.area = area;
         }
-        public double getancho(){
+        public  Vector2  getA () {
+            return this.a;
+        }
+        public  double  getAncho () {
             return this.ancho;
         }
-        public double getalto(){
+        public  double  getAlto () {
             return this.alto;
         }
-        /**
-        * Metodo a SVG regresa una cadena con la representación del rectángulo en svg
-        * @return una fugura geometrica
-        **/
-        public String toSVG(){
-                String rec = "<rect x='"+Double.toString(this.a.getX())+"' y='"+Double.toString(this.a.getY())+"' width='"+Double.toString(ancho)+"' height='"+Double.toString(alto)+"' fill='"+"orange"+"' stroke='"+"green"+"' stroke-width='"+"2.0"+"'/>";
-              return rec;
-            }    
-            /**
-            * Metodo toString regresa los atributos de un rectangulo
-            * @return una cadena con sus caracteristicas
-            **/
-            @Override
-        public String toString(){
-            Rectangulo rec =  new  Rectangulo ();
-	return  " Rectángulo "  +  " El vector es: ( "  +  this . v1 . getX () +  " , "  +  this . v1 . getY () +  " ) "  +  " El acho del rectángulo es: "  +
-	    this. ancho +  " La alura es: "  +  this. alto   +  " Su perímetro es: "  +  this. perimetro   +  " Su área es: "  +  this . área;
-    }   
-            /**
-            * Metodo es igual a comparar a dos rectangulos
-            * @return true si los rectangulos son iguales, false si no lo son
-            **/
-           
-        public boolean equals(Object v){
-            Rectangulo rec =  new Rectangulo ();
-	        Rectangulo rec1 =  new  Rectangulo ();
-	        if (r . equalsa (rec1));
-	        return True;
-	        return False;
-    }
-                
-
-
-
+        public  double  getPerimetro () {
+            return this.perimetro;
+        }
+        public  double  getArea () {
+            return this.area;
+        }
+         public  String  toSVG () {
+            String recta =  "<rect x=" +"\""+Double.toString(this.a.getX()) +"\"" +  "y=" + "\""+Double.toString(this.a.getY())+"\"" +  "width="  +"\"" + this.ancho + "\"" + "height=" + "\""+this.alto+"\""+"/>";
+            return   recta;
+        }
+        @Override
+        public  String  toString () {
+            String rect =  " El rectángulo tiene su vector "  + a +  " , tiene un alto de: "  + alto +  " y tiene un ancho de: "  + ancho;
+            return rect;
+        }
+        @Override
+        public  boolean  equals ( Object  v ) {
+            Rectangulo z = ( Rectangulo ) v;
+            return a == z.getA () && alto == z.getAlto () && ancho == z.getAncho ();
+        }
+    
     }
